@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudra Imitation | High Gold Rajvadi Jewellery</title>
+    <meta name="description"
+        content="Premium High Gold Rajvadi Jewellery by Balaji Gangadhar Telalwar. Specializing in Bridal sets, Mangalsutras, and Saree Pins.">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body data-theme="dark">
+    <!-- Luxury Navigation -->
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">
+                <h1 class="gold-text">RUDRA</h1>
+                <span>IMITATION</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#bridal">Bridal</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="glass-panel" title="Toggle Light/Dark Mode"></button>
+                <button id="cart-btn" class="glass-panel">
+                    <span class="icon">🛒</span>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h2 class="reveal-text">Timeless Excellence in <br><span class="gold-text">High Gold Rajvadi</span>
+                    </h2>
+                    <p>Discover the finest imitation jewellery crafted for the modern queen. From intricate Mangalsutras
+                        to majestic Bridal sets.</p>
+                    <div class="hero-btns">
+                        <a href="#collection" class="btn-primary">Shop Collection</a>
+                        <a href="#bridal" class="btn-bridal">View Bridal Collection ✨</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-jewel-container" id="hero-tilt">
+                        <!-- Real Featured Jewellery -->
+                        <img src="/assets/hero_necklace_new.jpeg" alt="Featured Necklace" class="hero-jewel">
+                        <div class="glow-effect"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bridal Showcase -->
+        <section id="bridal" class="bridal-section">
+            <div class="container section-header">
+                <h2 class="gold-text">The Bridal Edit</h2>
+                <div class="line"></div>
+                <div class="product-grid" id="bridal-grid">
+                    <!-- Bridal products injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Gallery -->
+        <section id="collection" class="collection">
+            <div class="container">
+                <div class="filter-bar-wrapper">
+                    <button id="gallery-menu-toggle" class="gallery-toggle" title="Show Categories">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="filter-bar" id="gallery-filters">
+                        <button class="filter-btn active" data-filter="all">All Designs</button>
+                        <button class="filter-btn" data-filter="mangalsutra">Mangalsutra</button>
+                        <button class="filter-btn" data-filter="ring">Rings</button>
+                        <button class="filter-btn" data-filter="ganthan">Ganthan</button>
+                        <button class="filter-btn" data-filter="saree-pin">Saree Pins</button>
+                        <button class="filter-btn" data-filter="rosegold">Rosegold</button>
+                        <button class="filter-btn" data-filter="1-gram">1 Gram</button>
+                        <button class="filter-btn" data-filter="ganthan">Ganthan</button>
+                    </div>
+                </div>
+                <div class="product-grid" id="main-product-grid">
+                    <!-- Products will be loaded from JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container glass-panel about-content">
+                <div class="about-text">
+                    <h2 class="gold-text">Craftsmanship of Balaji Telalwar</h2>
+                    <p>At Rudra Imitation, we believe jewellery is not just an accessory but a heritage. Founded by
+                        <strong>Balaji Gangadhar Telalwar</strong>, we bring traditional Rajvadi designs to life with
+                        premium quality gold plating and exquisite detailing.
+                    </p>
+                    <p>Located in the heart of <strong>New Sarafa Market, Loha</strong>, we serve as a beacon of
+                        elegance for Nanded and beyond.</p>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder or generated image -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <h3 class="gold-text">RUDRA IMITATION</h3>
+                <p>New Sarafa Market tq.Loha Dist.Nanded</p>
+                <p>Proprietor: Balaji Gangadhar Telalwar</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <a href="tel:9322242762" class="contact-link">📞 +91 9322242762</a>
+                <a href="https://wa.me/919322242762" class="btn-primary">WhatsApp Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rudra Imitation Jewellery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-wrapper">
+        <button id="chatbot-toggle" class="glass-panel">✨ Ask Rudra</button>
+        <div id="chatbot-window" class="glass-panel hidden">
+            <div class="chat-header">
+                <h4>Rudra Assistant</h4>
+                <button id="chat-close">×</button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-buttons">
+                <button class="chat-option" data-val="designs">Show Designs</button>
+                <button class="chat-option" data-val="contact">Contact Details</button>
+                <button class="chat-option" data-val="bridal">Bridal Sets</button>
+                <button class="chat-option" data-val="order">Where to place order?</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>

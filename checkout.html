@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Rudra Imitation</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .checkout-layout {
+            padding-top: 120px;
+            min-height: 80vh;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .remove-btn {
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-decoration: underline;
+            margin-left: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-gold);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <h1 class="gold-text" style="font-size: 1.8rem; margin: 0; line-height: 1;">RUDRA</h1>
+                <span
+                    style="font-size: 0.7rem; letter-spacing: 5px; color: var(--color-gold); text-transform: uppercase;">Imitation</span>
+            </div>
+            <a href="/" class="btn-primary" style="padding: 0.5rem 1.5rem;">← Back to Shop</a>
+        </nav>
+    </header>
+
+    <main class="container checkout-layout">
+        <h2 class="gold-text" style="margin-bottom: 2rem; font-size: 2.5rem;">Secure Checkout</h2>
+        <div class="checkout-grid">
+            <div class="glass-panel">
+                <h3>Customer Details</h3>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" placeholder="Enter mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address</label>
+                        <textarea rows="4" placeholder="Full address for delivery" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Place Order via WhatsApp</button>
+                </form>
+            </div>
+
+            <div class="glass-panel" style="height: fit-content;">
+                <h3>Your Order</h3>
+                <div id="checkout-items"></div>
+                <div class="total-section"
+                    style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-gold);">
+                    <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.2rem;">
+                        <span>Final Total:</span>
+                        <span id="checkout-total" class="gold-text">₹0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        const products = [
+            { id: 1, name: "Premium Rajvadi Saree Pin S-9", price: 1250, image: "/assets/saree_pin_premium.jpg" },
+            { id: 2, name: "High Gold Rajvadi Mangalsutra", price: 2150, image: "/assets/mangalsutra_premium.jpg" },
+            { id: 3, name: "Heritage Hasdi Set D-34", price: 3450, image: "/assets/hasdi_set_brass.jpg" },
+            { id: 4, name: "High Gold Hasdi Set i-2", price: 2850, image: "/assets/hasdi_set_gold.jpg" },
+            { id: 5, name: "Designer Gold Ring", price: 850, image: "/assets/product1.jpg" },
+            { id: 6, name: "Premium CZ AD Necklace A-53", price: 3250, image: "/assets/hero_necklace_new.jpg" },
+            { id: 7, name: "1 Gram Gold Traditional Bangle", price: 1850, image: "/assets/product6.jpg" },
+            { id: 8, name: "Antique Finish Mangalsutra", price: 2450, image: "/assets/product7.jpg" },
+            { id: 9, name: "Rajvadi Peacock Saree Pin", price: 1150, image: "/assets/product8.jpg" },
+            { id: 50, name: "Mini Ganthan Heritage Piece G-1", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.54 AM.jpeg" },
+            { id: 51, name: "Mini Ganthan Heritage Piece G-2", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.55 AM (1).jpeg" },
+            { id: 52, name: "Mini Ganthan Heritage Piece G-3", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.55 AM.jpeg" },
+            { id: 53, name: "Mini Ganthan Heritage Piece G-4", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.56 AM (1).jpeg" },
+            { id: 54, name: "Mini Ganthan Heritage Piece G-5", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.56 AM.jpeg" },
+            { id: 55, name: "Mini Ganthan Heritage Piece G-6", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.57 AM (1).jpeg" },
+            { id: 56, name: "Mini Ganthan Heritage Piece G-7", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.57 AM.jpeg" },
+            { id: 57, name: "Mini Ganthan Heritage Piece G-8", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.58 AM (1).jpeg" },
+            { id: 58, name: "Mini Ganthan Heritage Piece G-9", price: 1450, image: "/assets/Mini Ganthan/WhatsApp Image 2026-02-08 at 9.55.58 AM.jpeg" },
+            { id: 101, name: "Royal Bridal Heritage Hasdi Set", price: 12500, image: "/assets/bridal_set_main.jpg" }
+        ];
+
+        const savedTheme = localStorage.getItem('rudra-theme') || 'dark';
+        document.body.setAttribute('data-theme', savedTheme);
+
+        const cartItems = JSON.parse(localStorage.getItem('rudra-cart') || '[]');
+        const container = document.getElementById('checkout-items');
+        let total = 0;
+
+        function renderCheckout() {
+            container.innerHTML = '';
+            total = 0;
+            if (cartItems.length === 0) {
+                container.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cartItems.forEach((itemId, index) => {
+                    const product = products.find(p => p.id === itemId);
+                    if (product) {
+                        total += product.price;
+                        container.innerHTML += `
+                            <div class="cart-item">
+                                <div style="display: flex; gap: 1rem; align-items: center;">
+                                    <img src="${product.image}" onerror="this.src='/assets/product1.jpg'">
+                                    <div>
+                                        <span>${product.name}</span><br>
+                                        <span class="remove-btn" onclick="removeItem(${index})">Remove</span>
+                                    </div>
+                                </div>
+                                <span class="gold-text">₹${product.price}</span>
+                            </div>
+                        `;
+                    }
+                });
+            }
+            document.getElementById('checkout-total').textContent = '₹' + total.toLocaleString();
+        }
+
+        window.removeItem = (index) => {
+            cartItems.splice(index, 1);
+            localStorage.setItem('rudra-cart', JSON.stringify(cartItems));
+            renderCheckout();
+        };
+
+        renderCheckout();
+
+        document.getElementById('checkout-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = e.target[0].value;
+            const phone = e.target[1].value;
+            const address = e.target[2].value;
+            let orderDetails = "Order Details:%0A";
+            cartItems.forEach(itemId => {
+                const p = products.find(prod => prod.id === itemId);
+                if (p) orderDetails += `- ${p.name} (₹${p.price})%0A`;
+            });
+            const message = `Namaste Rudra Imitation! I'd like to place an order.%0A%0A*Customer Info*%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0A%0A*Order*%0A${orderDetails}%0A*Total: ₹${total.toLocaleString()}*`;
+            window.location.href = `https://wa.me/919322242762?text=${message}`;
+        });
+    </script>
+</body>
+
+</html>
